@@ -13,7 +13,7 @@ object Frame1: TFrame1
     Left = 232
     Top = 24
   end
-  object TQuerys: TFDQuery
+  object TQueryUsuarios: TFDQuery
     Connection = FDConnection1
     SQL.Strings = (
       'select * from usuario')

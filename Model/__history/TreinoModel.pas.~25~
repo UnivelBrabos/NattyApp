@@ -20,7 +20,7 @@ end;
 
 implementation
 
-// Construtor padrão. O Delphi é burro e não tem sobre carga de método.
+// Construtor padrão o Delphi é burro e não tem sobre carga de método.
 constructor TTreino.PCreate();
 begin
 

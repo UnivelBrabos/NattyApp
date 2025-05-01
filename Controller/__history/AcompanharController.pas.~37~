@@ -39,17 +39,22 @@ procedure TFrame2.ExemploSql;
 var
   Treino: TTreino;
 begin
-  Treino := TTreino.PCreate;
-
+  Treino := TTreino.Create;
   try
     TSQLManipulador.TQuerys.SQL.Text := Treino.SqlTodosTreinos;
     TSQLManipulador.TQuerys.Open;
 
+    // Percorrer os resultados
     TSQLManipulador.TQuerys.First;
     while not TSQLManipulador.TQuerys.Eof do
     begin
+      // Exemplo: carregar os dados em um objeto
+      Treino.FId := TSQLManipulador.TQuerys.FieldByName('id').AsInteger;
       Treino.FNome := TSQLManipulador.TQuerys.FieldByName('nome').AsString;
-      ShowMessage(Treino.FNome);
+      Treino.FData := TSQLManipulador.TQuerys.FieldByName('data').AsDateTime;
+      Treino.FUsuarioId := TSQLManipulador.TQuerys.FieldByName('usuario_id').AsInteger;
+
+      // Prossiga com o que quiser fazer com o treino carregado
 
       TSQLManipulador.TQuerys.Next;
     end;

@@ -36,28 +36,23 @@ begin
 end;
 
 procedure TFrame2.ExemploSql;
-var
+type
   Treino: TTreino;
+
 begin
-  Treino := TTreino.PCreate;
+      Treino := TTreino.Create;
 
-  try
-    TSQLManipulador.TQuerys.SQL.Text := Treino.SqlTodosTreinos;
-    TSQLManipulador.TQuerys.Open;
+      TSQLManipulador.TQuerys.SQL.Clear();
 
-    TSQLManipulador.TQuerys.First;
-    while not TSQLManipulador.TQuerys.Eof do
-    begin
-      Treino.FNome := TSQLManipulador.TQuerys.FieldByName('nome').AsString;
-      ShowMessage(Treino.FNome);
+      TSQLManipulador.TQuerys.SQL.Text := 'SELECT * FROM treino';
 
-      TSQLManipulador.TQuerys.Next;
-    end;
+      TSQLManipulador.TQuerys.Open();
 
-  finally
-    Treino.Free;
-  end;
+      TSQLManipulador.TQuerys.First;
+      while TSQLManipulador.TQuerys.Eof do
+      begin
+
+      end;
 end;
-
 
 end.

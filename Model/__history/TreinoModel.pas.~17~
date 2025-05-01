@@ -13,15 +13,14 @@ type
     // Coloque todos os Métodos daqui para baixo (Sem passar do end;)
     // Aqui fica a declaração. Após implementation coloque TTreino. antes do nome do método
     constructor Create(AId: Integer; const ANome: string; AData: TDate; AUsuarioId: Integer);
-    constructor PCreate();
+    constructor Create();
     function SqlTodosTreinos(): string;
 
 end;
 
 implementation
 
-// Construtor padrão. O Delphi é burro e não tem sobre carga de método.
-constructor TTreino.PCreate();
+constructor TTreino.Create();
 begin
 
 end;
