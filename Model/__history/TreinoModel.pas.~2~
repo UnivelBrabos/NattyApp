@@ -14,11 +14,5 @@ type
   end;
 
 implementation
-    constructor TTreino.Create(AId: Integer; const ANome: string; AData: TDate; AUsuarioId: Integer);
-begin
-  FId := AId;
-  FNome := ANome;
-  FData := AData;
-  FUsuarioId := AUsuarioId;
-end;
+
 end.
