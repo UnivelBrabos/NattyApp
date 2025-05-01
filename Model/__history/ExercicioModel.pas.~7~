@@ -1,0 +1,20 @@
+unit ExercicioModel;
+
+interface
+
+uses RegiaoModel;
+
+type
+  TExercicio = class
+  public
+    FId: Integer;
+    FNome: string;
+    FRegiao: TRegiao;
+
+    constructor Create(AId: Integer; const ANome, ARegiao: TRegiao);
+  end;
+
+
+implementation
+
+end.

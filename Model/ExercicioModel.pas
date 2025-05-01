@@ -1,0 +1,25 @@
+unit ExercicioModel;
+
+interface
+
+type
+  TExercicio = class
+  public
+    FId: Integer;
+    FNome: string;
+    FIdRegiao: integer;
+
+    constructor Create(AId: Integer; const ANome: string; ARegiao: integer);
+  end;
+
+
+implementation
+
+constructor TExercicio.Create(AId: Integer; const ANome: string; ARegiao: integer);
+begin
+  FId := AId;
+  FNome := ANome;
+  FIdRegiao := ARegiao;
+end;
+
+end.

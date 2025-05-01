@@ -1,0 +1,14 @@
+unit ExercicioModel;
+
+interface
+
+type
+  TExercicio = class
+  public
+    FId: Integer;
+    FNome: string;
+    FRegiao: string;
+
+implementation
+
+end.

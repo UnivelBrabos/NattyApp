@@ -1,0 +1,23 @@
+unit TreinoExercicioModel;
+
+interface
+
+type
+  TTreinoExercicio = class
+  public
+    FId: Integer;
+    FTreinoId: Integer;
+    FExercicioId: Integer;
+
+    constructor Create(AId, ATreinoId, AExercicioId: Integer);
+  end;
+
+implementation
+constructor TTreinoExercicio.Create(AId, ATreinoId, AExercicioId: Integer);
+begin
+  FId := AId;
+  FTreinoId := ATreinoId;
+  FExercicioId := AExercicioId;
+end;
+
+end.

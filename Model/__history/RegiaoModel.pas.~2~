@@ -1,0 +1,16 @@
+unit RegiaoModel;
+
+interface
+
+type
+  TRegiao = class
+  public
+    FId: Integer;
+    FRegiao: string;
+
+    constructor Create(AId: Integer; const ARegiao: string);
+  end;
+
+implementation
+
+end.

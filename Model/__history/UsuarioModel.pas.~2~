@@ -1,0 +1,19 @@
+unit UsuarioModel;
+
+interface
+
+Type
+  TUsuario = class
+            public
+               UserName : string;
+               Email : string;
+               Senha : string;
+               Peso : double;
+
+               constructor(Nome:string; Email:string, )
+
+            end;
+
+implementation
+
+end.

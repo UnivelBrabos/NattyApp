@@ -1,0 +1,31 @@
+unit UsuarioModel;
+
+interface
+
+type
+  TUsuario = class
+  private
+    FId: Integer;
+    FNome: string;
+    FEmail: string;
+    FSenha: string;
+    FPeso: Double;
+  public
+    property Id: Integer read FId write FId;
+    property Nome: string read FNome write FNome;
+    property Email: string read FEmail write FEmail;
+    property Senha: string read FSenha write FSenha;
+    property Peso: Double read FPeso write FPeso;
+
+    constructor Create(AId: Integer; const ANome, AEmail, ASenha: string; APeso: Double);
+  end;
+
+constructor TUsuario.Create(AId: Integer; const ANome, AEmail, ASenha: string; APeso: Double);
+begin
+  FId := AId;
+  FNome := ANome;
+  FEmail := AEmail;
+  FSenha := ASenha;
+  FPeso := APeso;
+end;
+

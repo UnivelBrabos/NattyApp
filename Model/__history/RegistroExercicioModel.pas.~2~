@@ -1,0 +1,27 @@
+unit RegistroExercicioModel;
+
+interface
+type
+  TRegistroExercicio = class
+  private
+    FId: Integer;
+    FTreinoExercicioId: Integer;
+    FSerie: Integer;
+    FRepeticoes: Integer;
+    FPesoUtilizado: Double;
+    FHora: TDateTime;
+  public
+    property Id: Integer read FId write FId;
+    property TreinoExercicioId: Integer read FTreinoExercicioId write FTreinoExercicioId;
+    property Serie: Integer read FSerie write FSerie;
+    property Repeticoes: Integer read FRepeticoes write FRepeticoes;
+    property PesoUtilizado: Double read FPesoUtilizado write FPesoUtilizado;
+    property Hora: TDateTime read FHora write FHora;
+
+    constructor Create(AId, ATreinoExercicioId, ASerie, ARepeticoes: Integer; APesoUtilizado: Double; AHora: TDateTime);
+  end;
+
+
+implementation
+
+end.
