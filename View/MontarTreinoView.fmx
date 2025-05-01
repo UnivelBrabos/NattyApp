@@ -1,0 +1,4 @@
+inherited Form3: TForm3
+  Caption = 'Form3'
+  DesignerMasterStyle = 0
+end

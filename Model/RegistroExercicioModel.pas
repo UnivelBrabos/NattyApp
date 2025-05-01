@@ -12,8 +12,13 @@ type
     FPesoUtilizado: Double;
     FHora: TDateTime;
 
+    // Coloque todos os Métodos daqui para baixo (Sem passar do end;)
+    // Aqui fica a declaração. Após implementation coloque TRegistroExercicio. antes do nome do método
+
     constructor Create(AId, ATreinoExercicioId, ASerie, ARepeticoes: Integer; APesoUtilizado: Double; AHora: TDateTime);
-  end;
+    function SqlTodosRegistroExercicio(): string;
+
+end;
 
 
 implementation
@@ -26,6 +31,11 @@ begin
   FRepeticoes := ARepeticoes;
   FPesoUtilizado := APesoUtilizado;
   FHora := AHora;
+end;
+
+    function TRegistroExercicio.SqlTodosRegistroExercicio(): string;
+begin
+  Result := 'SELECT * FROM RegistroExercicio';
 end;
 
 end.

@@ -10,8 +10,12 @@ type
     FData: TDate;
     FUsuarioId: Integer;
 
+    // Coloque todos os Métodos daqui para baixo (Sem passar do end;)
+    // Aqui fica a declaração. Após implementation coloque TTreino. antes do nome do método
     constructor Create(AId: Integer; const ANome: string; AData: TDate; AUsuarioId: Integer);
-  end;
+    function SqlTodosTreinos(): string;
+
+end;
 
 implementation
     constructor TTreino.Create(AId: Integer; const ANome: string; AData: TDate; AUsuarioId: Integer);
@@ -21,4 +25,10 @@ begin
   FData := AData;
   FUsuarioId := AUsuarioId;
 end;
+
+function TTreino.SqlTodosTreinos(): string;
+begin
+  Result := 'SELECT * FROM treino';
+end;
+
 end.

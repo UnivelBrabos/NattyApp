@@ -8,8 +8,13 @@ type
     FId: Integer;
     FRegiao: string;
 
+    // Coloque todos os Métodos daqui para baixo (Sem passar do end;)
+    // Aqui fica a declaração. Após implementation coloque TRegiao. antes do nome do método
+
     constructor Create(AId: Integer; const ARegiao: string);
-  end;
+    function SqlTodasRegioes(): string;
+
+end;
 
 implementation
 
@@ -17,6 +22,11 @@ constructor TRegiao.Create(AId: Integer; const ARegiao: string);
 begin
   FId := AId;
   FRegiao := ARegiao;
+end;
+
+function TRegiao.SqlTodasRegioes(): string;
+begin
+  Result := 'SELECT * FROM Regiao';
 end;
 
 end.

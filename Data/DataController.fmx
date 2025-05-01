@@ -1,0 +1,23 @@
+object Frame1: TFrame1
+  Size.Width = 524.000000000000000000
+  Size.Height = 620.000000000000000000
+  Size.PlatformDefault = False
+  object FDConnection1: TFDConnection
+    Params.Strings = (
+      
+        'Database=C:\Users\carlo\OneDrive\Documentos\GitHub\NattyApp\Data' +
+        '\NattyDB'
+      'DriverID=SQLite')
+    Connected = True
+    LoginPrompt = False
+    Left = 232
+    Top = 24
+  end
+  object TQueryUsuarios: TFDQuery
+    Connection = FDConnection1
+    SQL.Strings = (
+      'select * from usuario')
+    Left = 40
+    Top = 80
+  end
+end

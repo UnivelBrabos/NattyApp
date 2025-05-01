@@ -9,8 +9,14 @@ type
     FNome: string;
     FIdRegiao: integer;
 
+    // Coloque todos os Métodos daqui para baixo (Sem passar do end;)
+    // Aqui fica a declaração. Após implementation coloque TExercicio. antes do nome do método
+
     constructor Create(AId: Integer; const ANome: string; ARegiao: integer);
-  end;
+    function SqlTodosExercicios(): string;
+
+end;
+
 
 
 implementation
@@ -20,6 +26,11 @@ begin
   FId := AId;
   FNome := ANome;
   FIdRegiao := ARegiao;
+end;
+
+function TExercicio.SqlTodosExercicios(): string;
+begin
+  Result := 'SELECT * FROM Exercicio';
 end;
 
 end.

@@ -1,0 +1,33 @@
+unit UsuarioModel;
+
+interface
+
+type
+  TUsuario = class
+  public
+    FId: Integer;
+    FNome: string;
+    FEmail: string;
+    FSenha: string;
+    FPeso: Double;
+
+    constructor Create(AId: Integer;
+                       const ANome, AEmail, ASenha: string;
+                       APeso: Double);
+
+    function SqlTodosUsuarios(): String;
+
+end;
+
+implementation
+
+constructor TUsuario.Create(AId: Integer; const ANome, AEmail, ASenha: string; APeso: Double);
+begin
+  FId := AId;
+  FNome := ANome;
+  FEmail := AEmail;
+  FSenha := ASenha;
+  FPeso := APeso;
+end;
+
+end.

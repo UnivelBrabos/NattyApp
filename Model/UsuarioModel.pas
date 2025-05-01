@@ -11,9 +11,10 @@ type
     FSenha: string;
     FPeso: Double;
 
-    constructor Create(AId: Integer;
-                       const ANome, AEmail, ASenha: string;
-                       APeso: Double);
+    // Coloque todos os Métodos daqui para baixo (Sem passar do end;)
+    // Aqui fica a declaração. Após implementation coloque TUsuario. antes do nome do método
+    constructor Create(AId: Integer; const ANome, AEmail, ASenha: string; APeso: Double);
+    function SqlTodosUsuarios(): string;
 
 end;
 
@@ -26,6 +27,11 @@ begin
   FEmail := AEmail;
   FSenha := ASenha;
   FPeso := APeso;
+end;
+
+function TUsuario.SqlTodosUsuarios(): string;
+begin
+  Result := 'SELECT * FROM usuario';
 end;
 
 end.

@@ -9,8 +9,13 @@ type
     FTreinoId: Integer;
     FExercicioId: Integer;
 
+    // Coloque todos os Métodos daqui para baixo (Sem passar do end;)
+    // Aqui fica a declaração. Após implementation coloque TTreinoExercicio. antes do nome do método
+
     constructor Create(AId, ATreinoId, AExercicioId: Integer);
-  end;
+    function SqlTodosTreinoExercicio(): string;
+
+end;
 
 implementation
 
@@ -19,6 +24,11 @@ begin
   FId := AId;
   FTreinoId := ATreinoId;
   FExercicioId := AExercicioId;
+end;
+
+function TTreinoExercicio.SqlTodosTreinoExercicio(): string;
+begin
+  Result := 'SELECT * FROM TreinoExercicio';
 end;
 
 end.
