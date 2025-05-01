@@ -44,7 +44,7 @@
   na controller, deixa tudo na Model, e usa um objeto da model
   para retorna essa string.
 
-  Tem um método de exemplo em cada model.
+  Tem um método de exemplo em cada model
 }
 
 unit MontarTreinoView;

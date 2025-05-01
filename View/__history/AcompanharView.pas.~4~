@@ -33,9 +33,12 @@
  | Nome do Treino             |
  |                            |
  |  Exercicio 1:              |
- |  |reps| |peso| (+) N°Serie |
+ |  |reps| |peso| (+)         |
  |                            |
  |  (Finalizar)               |
+ |                            |
+ |  Exercicio 2:              |
+ |  |reps| |peso| (+)         |
  ______________________________
 
  Repetir algo mais ou menos com esse Design. Para ficar mais fácil, adiciona um exercício, e após o

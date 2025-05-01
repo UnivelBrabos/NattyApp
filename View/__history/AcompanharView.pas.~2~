@@ -33,30 +33,16 @@
  | Nome do Treino             |
  |                            |
  |  Exercicio 1:              |
- |  |reps| |peso| (+) N°Serie |
+ |  |reps| |peso| (+)         |
  |                            |
  |  (Finalizar)               |
+ |                            |
+ |  Exercicio 2:              |
+ |  |reps| |peso| (+)         |
  ______________________________
 
  Repetir algo mais ou menos com esse Design. Para ficar mais fácil, adiciona um exercício, e após o
  botão finalizar ser clicado você limpa o campo exercício e atribui ao segundo.
-
-  Estrutura para facilitar, e deixar o código mais bonito:
-
-  Instâncie um objeto global que é o AcompanharController.
-  AcompanharController => Nele você coloca todas as lógicas de tratamento de
-                  dados, e que vá manipular os dados.
-
-  Aqui na view você pode (Por exemplo) instânciar uma list de dados, e tals,
-  quando terminar e criar um procedure (Método sem retorno) que recebe uma
-  lista, e lá tu faz o tratamento de dados.
-
-  E na model que tu for usar, adiciona uma function que retorna uma string
-  com a sql que tu vai precisar. então invês de ter uma porrada de sql
-  na controller, deixa tudo na Model, e usa um objeto da model
-  para retorna essa string.
-
-  Tem um método de exemplo em cada model.
 
 }
 
