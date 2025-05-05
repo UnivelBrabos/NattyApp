@@ -1,0 +1,21 @@
+inherited Form4: TForm4
+  Caption = 'Form4'
+  ClientHeight = 580
+  ClientWidth = 408
+  DesignerMasterStyle = 0
+  object Rectangle1: TRectangle
+    Fill.Color = claCornflowerblue
+    Position.Y = 520.000000000000000000
+    Size.Width = 408.000000000000000000
+    Size.Height = 60.000000000000000000
+    Size.PlatformDefault = False
+    Stroke.Kind = None
+    object Image1: TImage
+      MultiResBitmap = <
+        item
+        end>
+      Position.X = 8.000000000000000000
+      Position.Y = 8.000000000000000000
+    end
+  end
+end

@@ -1,4 +1,4 @@
-unit UsuarioModel;
+﻿unit UsuarioModel;
 
 interface
 
@@ -10,23 +10,25 @@ type
     FEmail: string;
     FSenha: string;
     FPeso: Double;
+    FAltura: Double;
 
     // Coloque todos os Métodos daqui para baixo (Sem passar do end;)
     // Aqui fica a declaração. Após implementation coloque TUsuario. antes do nome do método
-    constructor Create(AId: Integer; const ANome, AEmail, ASenha: string; APeso: Double);
+    constructor Create(AId: Integer; const ANome, AEmail, ASenha: string; APeso, AAltura: Double);
     function SqlTodosUsuarios(): string;
 
 end;
 
 implementation
 
-constructor TUsuario.Create(AId: Integer; const ANome, AEmail, ASenha: string; APeso: Double);
+constructor TUsuario.Create(AId: Integer; const ANome, AEmail, ASenha: string; APeso, AAltura: Double);
 begin
   FId := AId;
   FNome := ANome;
   FEmail := AEmail;
   FSenha := ASenha;
   FPeso := APeso;
+  FAltura := AAltura;
 end;
 
 function TUsuario.SqlTodosUsuarios(): string;
