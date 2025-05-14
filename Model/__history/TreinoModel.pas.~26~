@@ -1,0 +1,42 @@
+﻿unit TreinoModel;
+
+interface
+
+type
+  TTreino = class
+  public
+    FId: Integer;
+    FNome: string;
+    FData: TDate;
+    FUsuarioId: Integer;
+
+    // Coloque todos os Métodos daqui para baixo (Sem passar do end;)
+    // Aqui fica a declaração. Após implementation coloque TTreino. antes do nome do método
+    constructor Create(AId: Integer; const ANome: string; AData: TDate; AUsuarioId: Integer);
+    constructor PCreate();
+    function SqlTodosTreinos(): string;
+
+end;
+
+implementation
+
+// Construtor padrão. O Delphi é burro e não tem sobre carga de método.
+constructor TTreino.PCreate();
+begin
+
+end;
+
+constructor TTreino.Create(AId: Integer; const ANome: string; AData: TDate; AUsuarioId: Integer);
+begin
+  FId := AId;
+  FNome := ANome;
+  FData := AData;
+  FUsuarioId := AUsuarioId;
+end;
+
+function TTreino.SqlTodosTreinos(): string;
+begin
+  Result := 'SELECT * FROM treino';
+end;
+
+end.

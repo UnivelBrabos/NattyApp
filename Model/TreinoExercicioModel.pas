@@ -1,34 +1,57 @@
-unit TreinoExercicioModel;
+﻿unit TreinoExercicioModel;
 
 interface
 
+uses
+  System.Variants;
+
 type
-  TTreinoExercicio = class
+  /// Camada de negócio: queries para vincular Treinos e Exercícios
+  TTreinoExercicioModel = class
   public
-    FId: Integer;
-    FTreinoId: Integer;
-    FExercicioId: Integer;
+    /// Busca os exercícios associados a um treino específico
+    class function SqlSelectByTreino(): string; static;
+    class function Params_SelectByTreino(ATreinoID: Integer): TArray<Variant>; static;
 
-    // Coloque todos os Métodos daqui para baixo (Sem passar do end;)
-    // Aqui fica a declaração. Após implementation coloque TTreinoExercicio. antes do nome do método
-
-    constructor Create(AId, ATreinoId, AExercicioId: Integer);
-    function SqlTodosTreinoExercicio(): string;
-
-end;
+    /// (Opcional) Inserir associação treino-exercício
+    class function SqlInsert(): string; static;
+    class function Params_Insert(ATreinoID, AExercicioID: Integer; ADayOfWeek: Integer): TArray<Variant>; static;
+  end;
 
 implementation
 
-constructor TTreinoExercicio.Create(AId, ATreinoId, AExercicioId: Integer);
+{ TTreinoExercicioModel }
+
+class function TTreinoExercicioModel.SqlSelectByTreino: string;
 begin
-  FId := AId;
-  FTreinoId := ATreinoId;
-  FExercicioId := AExercicioId;
+  Result :=
+    'SELECT E.ID, E.Nome, TE.DayOfWeek, E.DefaultTime ' +
+    'FROM TreinoExercicio TE ' +
+    'JOIN Exercicio E ON E.ID = TE.ExercicioID ' +
+    'WHERE TE.TreinoID = :TreinoID ' +
+    'ORDER BY E.Nome';
 end;
 
-function TTreinoExercicio.SqlTodosTreinoExercicio(): string;
+class function TTreinoExercicioModel.Params_SelectByTreino(ATreinoID: Integer): TArray<Variant>;
 begin
-  Result := 'SELECT * FROM TreinoExercicio';
+  SetLength(Result, 1);
+  Result[0] := ATreinoID;
+end;
+
+class function TTreinoExercicioModel.SqlInsert: string;
+begin
+  Result :=
+    'INSERT INTO TreinoExercicio (TreinoID, ExercicioID, DayOfWeek) ' +
+    'VALUES (:TreinoID, :ExercicioID, :DayOfWeek)';
+end;
+
+class function TTreinoExercicioModel.Params_Insert(ATreinoID, AExercicioID, ADayOfWeek: Integer): TArray<Variant>;
+begin
+  SetLength(Result, 3);
+  Result[0] := ATreinoID;
+  Result[1] := AExercicioID;
+  Result[2] := ADayOfWeek;
 end;
 
 end.
+
