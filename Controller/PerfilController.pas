@@ -4,18 +4,41 @@ interface
 
 uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants, 
-  FMX.Types, FMX.Graphics, FMX.Controls, FMX.Forms, FMX.Dialogs, FMX.StdCtrls;
+  FMX.Types, FMX.Graphics, FMX.Controls, FMX.Forms, FMX.Dialogs, FMX.StdCtrls, UsuarioModel,
+  DataController;
 
 type
   TFrame4 = class(TFrame)
   private
-    { Private declarations }
+  TSQLManipulador: TFrame1;
   public
-    { Public declarations }
+  constructor Create(AOwner: TComponent); override;
+  procedure AtualizaUsuario(Usuario: TUsuario);
+
+
   end;
 
 implementation
 
 {$R *.fmx}
+
+
+constructor TFrame4.Create(AOwner: TComponent);
+begin
+  inherited;
+  TSQLManipulador := TFrame1.Create(Self);
+  TSQLManipulador.Visible := False; // Não mostra o form do Sql
+end;
+
+procedure TFrame4.AtualizaUsuario(Usuario: TUsuario);
+var
+Query: string;
+
+begin
+  Query := Usuario.UpdateUser();
+
+  TSQLManipulador.TQuerys.SQL.Text := Query;
+  TSQLManipulador.TQuerys.ExecSQL;
+end;
 
 end.

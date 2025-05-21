@@ -1,0 +1,40 @@
+unit PerfilController;
+
+interface
+
+uses
+  System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants, 
+  FMX.Types, FMX.Graphics, FMX.Controls, FMX.Forms, FMX.Dialogs, FMX.StdCtrls, UsuarioModel,
+  DataController;
+
+type
+  TFrame4 = class(TFrame)
+  private
+  TSQLManipulador: TFrame1;
+  public
+  constructor Create(AOwner: TComponent); override;
+  procedure AtualizaUsuario(Usuario: TUsuario);
+
+
+  end;
+
+implementation
+
+constructor TFrame4.Create(AOwner: TComponent);
+begin
+  inherited;
+  TSQLManipulador := TFrame1.Create(Self);
+  TSQLManipulador.Visible := False; // Não mostra o form do Sql
+end;
+
+procedure TFrame4.AtualizaUsuario(Usuario: TUsuario);
+var
+Query: string;
+
+begin
+  Query := Usuario.UpdateUser();
+
+  TSQLManipulador.TQuerys.Text := Query;
+end;
+
+end.

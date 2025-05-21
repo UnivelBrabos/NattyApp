@@ -2,6 +2,9 @@
 
 interface
 
+uses
+  SysUtils;
+
 type
   TUsuario = class
   public
@@ -12,12 +15,10 @@ type
     FPeso: Double;
     FAltura: Double;
 
-    // Coloque todos os Métodos daqui para baixo (Sem passar do end;)
-    // Aqui fica a declaração. Após implementation coloque TUsuario. antes do nome do método
     constructor Create(AId: Integer; const ANome, AEmail, ASenha: string; APeso, AAltura: Double);
     function SqlTodosUsuarios(): string;
-
-end;
+    function UpdateUser(): string;
+  end;
 
 implementation
 
@@ -36,4 +37,14 @@ begin
   Result := 'SELECT * FROM usuario';
 end;
 
+function TUsuario.UpdateUser(): string;
+begin
+  Result := 'UPDATE USUARIO SET ' +
+            'NOME = ''' + Self.FNome + ''', ' +
+            'PESO = ''' + FloatToStr(Self.FPeso) + ''', ' +
+            'ALTURA = ''' + FloatToStr(Self.FAltura) + '''' +
+            ' WHERE ID = ' + IntToStr(Self.FId);
+end;
+
 end.
+

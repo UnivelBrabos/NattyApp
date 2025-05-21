@@ -5,17 +5,12 @@ interface
 uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants, 
   FMX.Types, FMX.Graphics, FMX.Controls, FMX.Forms, FMX.Dialogs, FMX.StdCtrls,
-  Main, FMX.Objects, FMX.Edit, FMX.Controls.Presentation, FMX.Ani, UsuarioModel;
+  Main, FMX.Objects, FMX.Edit, FMX.Controls.Presentation, FMX.Ani, UsuarioModel,
+  PerfilController;
 
 type
   TForm4 = class(TForm1)
     RecMenu: TRectangle;
-    ImageControl1: TImageControl;
-    BitmapListAnimation1: TBitmapListAnimation;
-    ImageControl2: TImageControl;
-    BitmapListAnimation2: TBitmapListAnimation;
-    ImageControl3: TImageControl;
-    BitmapListAnimation3: TBitmapListAnimation;
     lblNome: TLabel;
     txtNome: TEdit;
     lblEmail: TLabel;
@@ -27,12 +22,14 @@ type
     lblIMC: TLabel;
     lblValorIMC: TLabel;
     lblDescIMC: TLabel;
-    Rectangle1: TRectangle;
+    btnSalvar: TButton;
     procedure FormShow(Sender: TObject);
+    procedure btnSalvarClick(Sender: TObject);
   private
     procedure CalculaIMC();
   public
-    { Public declarations }
+
+    PerfilControlador: TFrame4;
   end;
 
 var
@@ -46,11 +43,29 @@ implementation
 procedure TForm4.FormShow(Sender: TObject);
 begin
   inherited;
-  Usuario := TUsuario.Create(1, 'Carlos', 'Carlos@testes.com', '123', 200.0, 1.85);
+  PerfilControlador := TFrame4.Create(self);
+
+  Usuario := TUsuario.Create(1, 'Carlos', 'Carlos@testes.com', '123', 80.0, 1.85);
 
   txtNome.Text := Usuario.FNome;
   txtPeso.Text := Usuario.FPeso.ToString;
   txtAltura.Text := Usuario.FAltura.ToString;
+  CalculaIMC;
+end;
+
+procedure TForm4.btnSalvarClick(Sender: TObject);
+var
+  fs: TFormatSettings;
+begin
+  inherited;
+  fs := TFormatSettings.Create;
+  fs.DecimalSeparator := '.';
+
+  Usuario.FNome := txtNome.Text;
+  Usuario.FPeso := StrToFloat(txtPeso.Text, fs);
+  Usuario.FAltura := StrToFloat(txtAltura.Text, fs);
+
+  PerfilControlador.AtualizaUsuario(Usuario);
   CalculaIMC;
 end;
 
@@ -85,6 +100,5 @@ begin
     end;
 
 end;
-
 
 end.

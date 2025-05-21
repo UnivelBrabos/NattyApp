@@ -18,7 +18,8 @@ uses
   PerfilView in 'View\PerfilView.pas' {Form4},
   AcompanharController in 'Controller\AcompanharController.pas' {Frame2: TFrame},
   MontarTreinoController in 'Controller\MontarTreinoController.pas' {Frame3: TFrame},
-  PerfilController in 'Controller\PerfilController.pas' {Frame4: TFrame};
+  PerfilController in 'Controller\PerfilController.pas' {Frame4: TFrame},
+  HistoricoModel in 'Model\HistoricoModel.pas' {DataModule1: TDataModule};
 
 {$R *.res}
 

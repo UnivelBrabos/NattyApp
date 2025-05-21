@@ -1,4 +1,4 @@
-unit AcompanharController;
+﻿unit AcompanharController;
 
 interface
 
@@ -22,6 +22,7 @@ end;
 implementation
 
 {$R *.fmx}
+
 
 constructor TFrame2.Create(AOwner: TComponent);
 begin

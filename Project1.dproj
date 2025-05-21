@@ -340,6 +340,10 @@
             <FormType>fmx</FormType>
             <DesignClass>TFrame</DesignClass>
         </DCCReference>
+        <DCCReference Include="Model\HistoricoModel.pas">
+            <Form>DataModule1</Form>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
         <None Include="Project1.dpr"/>
         <RcItem Include="Imagens\AcompanharIcon.png">
             <ResourceType>RCDATA</ResourceType>
