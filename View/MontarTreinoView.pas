@@ -1,4 +1,4 @@
-{
+﻿{
  Tarde Saymon, Vou te dar um caminho a seguir (Minha visão e auxilio),
  mas fique a vontade para fazer oque achar melhor!
 
@@ -54,10 +54,23 @@ interface
 uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants, 
   FMX.Types, FMX.Graphics, FMX.Controls, FMX.Forms, FMX.Dialogs, FMX.StdCtrls,
-  Main;
+  Main, FMX.Objects, FMX.Controls.Presentation, FMX.ListView.Types,
+  FMX.ListView.Appearances, FMX.ListView.Adapters.Base, FMX.ListView;
 
 type
   TForm3 = class(TForm1)
+    RecMenu: TRectangle;
+    btnPerfil: TImageControl;
+    btnTreino: TImageControl;
+    btnAcompanhar: TImageControl;
+    RecFundo: TRectangle;
+    lblTitulo: TLabel;
+    RecTitulo: TRectangle;
+    RecCriar: TRectangle;
+    lblCriar: TLabel;
+    lvTreinos: TListView;
+
+
   private
     { Private declarations }
   public
@@ -70,5 +83,6 @@ var
 implementation
 
 {$R *.fmx}
+
 
 end.
