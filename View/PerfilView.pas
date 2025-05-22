@@ -3,13 +3,13 @@ unit PerfilView;
 interface
 
 uses
-  System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants, 
+  System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
   FMX.Types, FMX.Graphics, FMX.Controls, FMX.Forms, FMX.Dialogs, FMX.StdCtrls,
-  Main, FMX.Objects, FMX.Edit, FMX.Controls.Presentation, FMX.Ani, UsuarioModel,
+  FMX.Objects, FMX.Edit, FMX.Controls.Presentation, FMX.Ani, UsuarioModel,
   PerfilController;
 
 type
-  TForm4 = class(TForm1)
+  TForm4 = class(TForm)
     RecMenu: TRectangle;
     lblNome: TLabel;
     txtNome: TEdit;
@@ -26,30 +26,29 @@ type
     procedure FormShow(Sender: TObject);
     procedure btnSalvarClick(Sender: TObject);
   private
-    procedure CalculaIMC();
+    FUsuario: TUsuario;
+    FPerfilControlador: TFrame4;
+    procedure CalculaIMC;
   public
-
-    PerfilControlador: TFrame4;
+    constructor Create(AOwner: TComponent; const AUsuario: TUsuario); reintroduce;
   end;
-
-var
-  Form4: TForm4;
-  Usuario: TUsuario;
 
 implementation
 
 {$R *.fmx}
 
+constructor TForm4.Create(AOwner: TComponent; const AUsuario: TUsuario);
+begin
+  inherited Create(AOwner);
+  FUsuario := AUsuario;
+  FPerfilControlador := TFrame4.Create(Self);
+end;
+
 procedure TForm4.FormShow(Sender: TObject);
 begin
-  inherited;
-  PerfilControlador := TFrame4.Create(self);
-
-  Usuario := TUsuario.Create(1, 'Carlos', 'Carlos@testes.com', '123', 80.0, 1.85);
-
-  txtNome.Text := Usuario.FNome;
-  txtPeso.Text := Usuario.FPeso.ToString;
-  txtAltura.Text := Usuario.FAltura.ToString;
+  txtNome.Text := FUsuario.FNome;
+  txtPeso.Text := FUsuario.FPeso.ToString;
+  txtAltura.Text := FUsuario.FAltura.ToString;
   CalculaIMC;
 end;
 
@@ -57,48 +56,45 @@ procedure TForm4.btnSalvarClick(Sender: TObject);
 var
   fs: TFormatSettings;
 begin
-  inherited;
   fs := TFormatSettings.Create;
   fs.DecimalSeparator := '.';
 
-  Usuario.FNome := txtNome.Text;
-  Usuario.FPeso := StrToFloat(txtPeso.Text, fs);
-  Usuario.FAltura := StrToFloat(txtAltura.Text, fs);
+  FUsuario.FNome := txtNome.Text;
+  FUsuario.FPeso := StrToFloat(txtPeso.Text, fs);
+  FUsuario.FAltura := StrToFloat(txtAltura.Text, fs);
 
-  PerfilControlador.AtualizaUsuario(Usuario);
+  FPerfilControlador.AtualizaUsuario(FUsuario);
   CalculaIMC;
 end;
 
-procedure TForm4.CalculaIMC();
+procedure TForm4.CalculaIMC;
 var
   IMC: Double;
 begin
+  IMC := FUsuario.FPeso / Sqr(FUsuario.FAltura);
+  lblValorIMC.Text := FormatFloat('0.0', IMC);
 
-    IMC := Usuario.FPeso / Sqr(Usuario.FAltura);
-
-    lblValorImc.Text := FormatFloat('0.0', IMC);
-
-    if IMC < 18.5 then
-    begin
-      lblDescIMC.Text := 'Baixo peso';
-      lblDescIMC.TextSettings.FontColor := TColors.Blue;
-    end
-    else if IMC < 25 then
-    begin
-      lblDescIMC.Text := 'Peso normal';
-      lblDescIMC.TextSettings.FontColor := TColors.Green;
-    end
-    else if IMC < 30 then
-    begin
-      lblDescIMC.Text := 'Sobrepeso';
-      lblDescIMC.TextSettings.FontColor := TColors.Yellow;
-    end
-    else
-    begin
-      lblDescIMC.Text := 'Obesidade';
-      lblDescIMC.TextSettings.FontColor := TColors.Red;
-    end;
-
+  if IMC < 18.5 then
+  begin
+    lblDescIMC.Text := 'Baixo peso';
+    lblDescIMC.TextSettings.FontColor := TColors.Blue;
+  end
+  else if IMC < 25 then
+  begin
+    lblDescIMC.Text := 'Peso normal';
+    lblDescIMC.TextSettings.FontColor := TColors.Green;
+  end
+  else if IMC < 30 then
+  begin
+    lblDescIMC.Text := 'Sobrepeso';
+    lblDescIMC.TextSettings.FontColor := TColors.Yellow;
+  end
+  else
+  begin
+    lblDescIMC.Text := 'Obesidade';
+    lblDescIMC.TextSettings.FontColor := TColors.Red;
+  end;
 end;
 
 end.
+

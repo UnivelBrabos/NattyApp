@@ -16,11 +16,18 @@ type
     FAltura: Double;
 
     constructor Create(AId: Integer; const ANome, AEmail, ASenha: string; APeso, AAltura: Double);
+    constructor Criar();
     function SqlTodosUsuarios(): string;
     function UpdateUser(): string;
+    function UsuarioExiste(const Nome, Senha : string): string;
   end;
 
 implementation
+
+constructor TUsuario.Criar();
+begin
+
+end;
 
 constructor TUsuario.Create(AId: Integer; const ANome, AEmail, ASenha: string; APeso, AAltura: Double);
 begin
@@ -45,6 +52,15 @@ begin
             'ALTURA = ''' + FloatToStr(Self.FAltura) + '''' +
             ' WHERE ID = ' + IntToStr(Self.FId);
 end;
+
+function TUsuario.UsuarioExiste(const Nome, Senha: string): string;
+begin
+  Result := Format(
+    'SELECT * FROM USUARIO WHERE (NOME = ''%s'' OR EMAIL = ''%s'') AND SENHA = ''%s''',
+    [Nome, Nome, Senha]
+  );
+end;
+
 
 end.
 

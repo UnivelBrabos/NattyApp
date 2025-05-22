@@ -1,4 +1,4 @@
-unit PerfilController;
+﻿unit PerfilController;
 
 interface
 
@@ -14,6 +14,8 @@ type
   public
   constructor Create(AOwner: TComponent); override;
   procedure AtualizaUsuario(Usuario: TUsuario);
+  function UsuarioExiste(const Nome, Senha : string): TUsuario;
+  procedure TodosOsUsuarios();
 
 
   end;
@@ -23,9 +25,30 @@ implementation
 {$R *.fmx}
 
 
+procedure TFrame4.TodosOsUsuarios();
+var
+Usuario: TUsuario;
+Mensagem: string;
+
+begin
+  Usuario := TUsuario.Criar;
+
+  TSQLManipulador.TQuerys.SQL.Text := Usuario.SqlTodosUsuarios;
+  TSQLManipulador.TQuerys.Open;
+
+  while TSQLManipulador.TQuerys.Eof do
+  begin
+    Mensagem := 'Usuario ' +  TSQLManipulador.TQuerys.FieldByName('Nome').AsString
+                 + 'Senha: ' + TSQLManipulador.TQuerys.FieldByName('Senha').AsString;
+
+    ShowMessage(Mensagem);
+    TSQLManipulador.TQuerys.Next;
+  end;
+
+end;
+
 constructor TFrame4.Create(AOwner: TComponent);
 begin
-  inherited;
   TSQLManipulador := TFrame1.Create(Self);
   TSQLManipulador.Visible := False; // Não mostra o form do Sql
 end;
@@ -39,6 +62,30 @@ begin
 
   TSQLManipulador.TQuerys.SQL.Text := Query;
   TSQLManipulador.TQuerys.ExecSQL;
+end;
+
+function TFrame4.UsuarioExiste(const Nome, Senha : string): TUsuario;
+var
+Query: string;
+Usuario: TUsuario;
+
+begin
+  Usuario := TUsuario.Criar;
+  Query := Usuario.UsuarioExiste(Nome, Senha);
+
+  TSQLManipulador.TQuerys.SQL.Text := Query;
+  TSQLManipulador.TQuerys.Open;
+
+  if not TSQLManipulador.TQuerys.IsEmpty then
+  begin
+     Usuario.FNome := TSQLManipulador.TQuerys.FieldByName('Nome').AsString;
+     Usuario.FEmail := TSQLManipulador.TQuerys.FieldByName('Email').AsString;
+     Usuario.FSenha := TSQLManipulador.TQuerys.FieldByName('Senha').AsString;
+     Usuario.FPeso := TSQLManipulador.TQuerys.FieldByName('Peso').AsFloat;
+     Usuario.FAltura := TSQLManipulador.TQuerys.FieldByName('Altura').AsFloat;
+  end;
+
+  Result := Usuario;
 end;
 
 end.

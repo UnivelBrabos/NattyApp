@@ -1,0 +1,86 @@
+﻿unit PerfilController;
+
+interface
+
+uses
+  System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants, 
+  FMX.Types, FMX.Graphics, FMX.Controls, FMX.Forms, FMX.Dialogs, FMX.StdCtrls, UsuarioModel,
+  DataController;
+
+type
+  TFrame4 = class(TFrame)
+  private
+  TSQLManipulador: TFrame1;
+  public
+  constructor Create(AOwner: TComponent); override;
+  procedure AtualizaUsuario(Usuario: TUsuario);
+  function UsuarioExiste(const Nome, Senha : string): TUsuario;
+
+
+  end;
+
+implementation
+
+{$R *.fmx}
+
+
+constructor TFrame4.Create(AOwner: TComponent);
+begin
+  TSQLManipulador := TFrame1.Create(Self);
+  TSQLManipulador.Visible := False; // Não mostra o form do Sql
+end;
+
+procedure TFrame4.AtualizaUsuario(Usuario: TUsuario);
+var
+Query: string;
+
+begin
+  Query := Usuario.UpdateUser();
+
+  TSQLManipulador.TQuerys.SQL.Text := Query;
+  TSQLManipulador.TQuerys.ExecSQL;
+end;
+
+function TFrame4.UsuarioExiste(const Nome, Senha: string): TUsuario;
+var
+  Query: string;
+  fs: TFormatSettings;
+begin
+  // Cria a instância do usuário
+  Result := TUsuario.Criar;
+
+  // Define o formato decimal com ponto
+  fs := TFormatSettings.Create;
+  fs.DecimalSeparator := '.';
+
+  // Monta a SQL formatada
+  Query := Format(
+    'SELECT * FROM USUARIO WHERE (NOME = ''%s'' OR EMAIL = ''%s'') AND SENHA = ''%s''',
+    [Nome, Nome, Senha]
+  );
+
+  // Executa a consulta
+  TSQLManipulador.TQuerys.SQL.Text := Query;
+  TSQLManipulador.TQuerys.Open;
+
+  // Se encontrou dados
+  if not TSQLManipulador.TQuerys.IsEmpty then
+  begin
+    Result.FNome := TSQLManipulador.TQuerys.FieldByName('Nome').AsString;
+    Result.FEmail := TSQLManipulador.TQuerys.FieldByName('Email').AsString;
+    Result.FSenha := TSQLManipulador.TQuerys.FieldByName('Senha').AsString;
+
+    if not TSQLManipulador.TQuerys.FieldByName('Peso').IsNull then
+      Result.FPeso := StrToFloatDef(
+        StringReplace(TSQLManipulador.TQuerys.FieldByName('Peso').AsString, ',', '.', [rfReplaceAll]), 0, fs
+      );
+
+    if not TSQLManipulador.TQuerys.FieldByName('Altura').IsNull then
+      Result.FAltura := StrToFloatDef(
+        StringReplace(TSQLManipulador.TQuerys.FieldByName('Altura').AsString, ',', '.', [rfReplaceAll]), 0, fs
+      );
+  end;
+end;
+
+
+end.

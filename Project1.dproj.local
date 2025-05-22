@@ -61,10 +61,10 @@
     <Transaction>2025/05/04 22:38:26.000.880,=C:\Users\carlo\OneDrive\Documentos\GitHub\NattyApp\Imagens\AcompanharIcon.png</Transaction>
     <Transaction>2025/05/04 22:38:26.000.972,=C:\Users\carlo\OneDrive\Documentos\GitHub\NattyApp\Imagens\MontarIcon.png</Transaction>
     <Transaction>2025/05/04 22:38:27.000.012,=C:\Users\carlo\OneDrive\Documentos\GitHub\NattyApp\Imagens\UserIcon.png</Transaction>
-    <Transaction>2025/05/20 19:20:48.090,=C:\Users\carlo\OneDrive\Documentos\GitHub\NattyApp\Unit1.pas</Transaction>
-    <Transaction>2025/05/20 19:21:15.902,=C:\Users\carlo\OneDrive\Documentos\GitHub\NattyApp\Unit1.pas</Transaction>
-    <Transaction>2025/05/20 19:22:06.104,C:\Users\carlo\OneDrive\Documentos\GitHub\NattyApp\Model\HistoricoModel.dfm=C:\Users\carlo\OneDrive\Documentos\GitHub\NattyApp\Unit1.dfm</Transaction>
-    <Transaction>2025/05/20 19:22:06.104,C:\Users\carlo\OneDrive\Documentos\GitHub\NattyApp\Model\HistoricoModel.pas=C:\Users\carlo\OneDrive\Documentos\GitHub\NattyApp\Unit1.pas</Transaction>
+    <Transaction>2025/05/20 19:20:48.000.090,=C:\Users\carlo\OneDrive\Documentos\GitHub\NattyApp\Unit1.pas</Transaction>
+    <Transaction>2025/05/20 19:21:15.000.902,=C:\Users\carlo\OneDrive\Documentos\GitHub\NattyApp\Unit1.pas</Transaction>
+    <Transaction>2025/05/20 19:22:06.000.104,C:\Users\carlo\OneDrive\Documentos\GitHub\NattyApp\Model\HistoricoModel.dfm=C:\Users\carlo\OneDrive\Documentos\GitHub\NattyApp\Unit1.dfm</Transaction>
+    <Transaction>2025/05/20 19:22:06.000.104,C:\Users\carlo\OneDrive\Documentos\GitHub\NattyApp\Model\HistoricoModel.pas=C:\Users\carlo\OneDrive\Documentos\GitHub\NattyApp\Unit1.pas</Transaction>
   </Transactions>
 	<ProjectSortOrder AutoSort="0" SortType="0">
     <File Path="activity-1.7.2.dex.jar"/>

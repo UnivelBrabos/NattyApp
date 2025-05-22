@@ -1,11 +1,67 @@
 object Form1: TForm1
   Left = 0
   Top = 0
-  Caption = 'Form1'
-  ClientHeight = 480
-  ClientWidth = 440
+  Caption = 'frmLogin'
+  ClientHeight = 572
+  ClientWidth = 308
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
   DesignerMasterStyle = 0
+  object btnEntrar: TButton
+    Position.X = 89.000000000000000000
+    Position.Y = 368.000000000000000000
+    Size.Width = 105.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    Text = 'Entrar'
+    TextSettings.Trimming = None
+    OnClick = btnEntrarClick
+  end
+  object lblUsuario: TLabel
+    Position.X = 24.000000000000000000
+    Position.Y = 96.000000000000000000
+    Size.Width = 81.000000000000000000
+    Size.Height = 25.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'Usuario/Email:'
+    TabOrder = 3
+  end
+  object edtUsuario: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 4
+    Position.X = 113.000000000000000000
+    Position.Y = 96.000000000000000000
+    Size.Width = 171.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object lblSenha: TLabel
+    Position.X = 24.000000000000000000
+    Position.Y = 152.000000000000000000
+    Size.Width = 81.000000000000000000
+    Size.Height = 25.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'Senha:'
+    TabOrder = 1
+  end
+  object edtSenha: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 2
+    Position.X = 113.000000000000000000
+    Position.Y = 152.000000000000000000
+    Size.Width = 171.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object Button1: TButton
+    Position.X = 104.000000000000000000
+    Position.Y = 280.000000000000000000
+    TabOrder = 5
+    Text = 'Button1'
+    TextSettings.Trimming = None
+    OnClick = Button1Click
+  end
 end
