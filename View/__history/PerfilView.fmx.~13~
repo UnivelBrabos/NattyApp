@@ -1,0 +1,144 @@
+inherited Form4: TForm4
+  Caption = 'Form4'
+  ClientHeight = 580
+  ClientWidth = 408
+  Constraints.MaxHeight = 608.000000000000000000
+  Constraints.MaxWidth = 408.000000000000000000
+  Constraints.MinHeight = 580.000000000000000000
+  Constraints.MinWidth = 408.000000000000000000
+  OnShow = FormShow
+  DesignerMasterStyle = 0
+  object RecMenu: TRectangle
+    Fill.Color = claCornflowerblue
+    Position.Y = 520.000000000000000000
+    Size.Width = 408.000000000000000000
+    Size.Height = 60.000000000000000000
+    Size.PlatformDefault = False
+    Stroke.Kind = None
+  end
+  object lblNome: TLabel
+    StyledSettings = [Family, Style, FontColor]
+    Position.X = 24.000000000000000000
+    Position.Y = 40.000000000000000000
+    Size.Width = 73.000000000000000000
+    Size.Height = 25.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 20.000000000000000000
+    Text = 'Nome:'
+    TabOrder = 8
+  end
+  object txtNome: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 11
+    Position.X = 105.000000000000000000
+    Position.Y = 43.000000000000000000
+    Size.Width = 240.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object lblEmail: TLabel
+    StyledSettings = [Family, Style, FontColor]
+    Position.X = 24.000000000000000000
+    Position.Y = 81.000000000000000000
+    Size.Width = 73.000000000000000000
+    Size.Height = 25.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 20.000000000000000000
+    Text = 'Peso:'
+    TabOrder = 7
+  end
+  object txtPeso: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 10
+    Position.X = 105.000000000000000000
+    Position.Y = 84.000000000000000000
+    Size.Width = 48.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object lblQuilo: TLabel
+    StyledSettings = [Family, Style, FontColor]
+    Position.X = 161.000000000000000000
+    Position.Y = 84.000000000000000000
+    Size.Width = 32.000000000000000000
+    Size.Height = 25.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 20.000000000000000000
+    Text = 'Kg'
+    TabOrder = 2
+  end
+  object lblAltura: TLabel
+    StyledSettings = [Family, Style, FontColor]
+    Position.X = 24.000000000000000000
+    Position.Y = 114.000000000000000000
+    Size.Width = 73.000000000000000000
+    Size.Height = 25.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 20.000000000000000000
+    Text = 'Altura:'
+    TabOrder = 6
+  end
+  object txtAltura: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    TabOrder = 9
+    Position.X = 105.000000000000000000
+    Position.Y = 117.000000000000000000
+    Size.Width = 48.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+  end
+  object lblMetros: TLabel
+    StyledSettings = [Family, Style, FontColor]
+    Position.X = 161.000000000000000000
+    Position.Y = 117.000000000000000000
+    Size.Width = 24.000000000000000000
+    Size.Height = 25.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 20.000000000000000000
+    Text = 'M'
+    TabOrder = 1
+  end
+  object lblIMC: TLabel
+    StyledSettings = [Family, Style, FontColor]
+    Position.X = 24.000000000000000000
+    Position.Y = 166.000000000000000000
+    Size.Width = 49.000000000000000000
+    Size.Height = 25.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 20.000000000000000000
+    Text = 'IMC:'
+    TabOrder = 5
+  end
+  object lblValorIMC: TLabel
+    StyledSettings = [Family, Style, FontColor]
+    Position.X = 111.000000000000000000
+    Position.Y = 166.000000000000000000
+    Size.Width = 89.000000000000000000
+    Size.Height = 25.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 20.000000000000000000
+    Text = 'ValorIMC'
+    TabOrder = 4
+  end
+  object lblDescIMC: TLabel
+    StyledSettings = [Family, Style, FontColor]
+    Position.X = 208.000000000000000000
+    Position.Y = 166.000000000000000000
+    Size.Width = 177.000000000000000000
+    Size.Height = 25.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Size = 20.000000000000000000
+    Text = 'ValorIMC'
+    TabOrder = 3
+  end
+  object btnSalvar: TButton
+    Position.X = 24.000000000000000000
+    Position.Y = 224.000000000000000000
+    Size.Width = 81.000000000000000000
+    Size.Height = 25.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 13
+    Text = 'Salvar'
+    TextSettings.Trimming = None
+  end
+end

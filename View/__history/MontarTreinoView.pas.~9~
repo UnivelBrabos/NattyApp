@@ -1,0 +1,74 @@
+﻿{
+ Tarde Saymon, Vou te dar um caminho a seguir (Minha visão e auxilio),
+ mas fique a vontade para fazer oque achar melhor!
+
+ Tu vai manipular 3 Models: TreinoModel, ExercicioModel, TreinoExercicioModel.
+
+ TreinoModel => Nessa model é onde tu vai criar teu ponto principal. Sempre
+                que for adicionado um novo treino é essa model que tu vai
+                criar. O usuário escolhe um nome, e tu pega a data corrente.
+ ExercicioModel => Após criar o TreinoModel, crie uma tela que para cada
+                    exercicio é criado um campo com => nome, região e um
+                    botão (Adicionar). Para facilitar nossa vida limite
+                    cada treino para 5 exercícios. Recomendação, crie uma
+                    Lista de exercicio, e conforme o usuário for adicionando
+                    tu salva nessa lista, e sempre verificando se o tamanho
+                    não passou de 5. (Para facilitar, ao invês de criar uma
+                    lista de  ExercicioModel, cria uma lista de integer, e
+                    só salva o Id).
+ TreinoExercicioModel => Assim que o usuário clicar em (Salvar Treino), tu vai
+                          salvar o treino no banco, e fazer retornar o id
+                          do treino que tu acabou de inserir.
+                          Pós salvar o treino, tu vai iniciar um laço for
+                          e em cada repetição tu vai fazer um insert na tabela
+                          treino exercicio.
+
+ Em resumo =>
+
+ Ao invês de se estressar criando várias telas, use só uma, e cada processo
+ no caso: Criar treino, e adicionar exercícios. cria um frame para cada,
+ quando cliicar no botão (Adicionar exercícios) você muda a visibilidade do
+ frame de treino para invicível, e ativa o frame do Exercícios.
+
+ Estrutura para facilitar, e deixar o código mais bonito:
+  Instâncie um objeto global que é o MontarTreinoController.
+  MontarTreinoController => Nele você coloca todas as lógicas de tratamento de
+                  dados, e que vá manipular os dados.
+
+  Aqui na view você pode (Por exemplo) instânciar uma list de dados, e tals,
+  quando terminar e criar um procedure (Método sem retorno) que recebe uma
+  lista, e lá tu faz o tratamento de dados.
+
+    E na model que tu for usar, adiciona uma function que retorna uma string
+  com a sql que tu vai precisar. então invês de ter uma porrada de sql
+  na controller, deixa tudo na Model, e usa um objeto da model
+  para retorna essa string.
+
+  Tem um método de exemplo em cada model.
+}
+
+unit MontarTreinoView;
+
+interface
+
+uses
+  System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants, 
+  FMX.Types, FMX.Graphics, FMX.Controls, FMX.Forms, FMX.Dialogs, FMX.StdCtrls,
+  FMX.Edit, FMX.Controls.Presentation;
+
+type
+  TForm3 = class(TForm)
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form3: TForm3;
+
+implementation
+
+{$R *.fmx}
+
+end.

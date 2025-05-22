@@ -1,9 +1,10 @@
 program Project1;
 
+{$R *.dres}
+
 uses
   System.StartUpCopy,
   FMX.Forms,
-  Main in 'Main.pas' {Form1},
   UsuarioModel in 'Model\UsuarioModel.pas',
   ExercicioModel in 'Model\ExercicioModel.pas',
   TreinoModel in 'Model\TreinoModel.pas',
@@ -16,15 +17,15 @@ uses
   PerfilView in 'View\PerfilView.pas' {Form4},
   AcompanharController in 'Controller\AcompanharController.pas' {Frame2: TFrame},
   MontarTreinoController in 'Controller\MontarTreinoController.pas' {Frame3: TFrame},
-  PerfilController in 'Controller\PerfilController.pas' {Frame4: TFrame};
+  PerfilController in 'Controller\PerfilController.pas' {Frame4: TFrame},
+  HistoricoModel in 'Model\HistoricoModel.pas' {DataModule1: TDataModule},
+  Main in 'Main.pas' {Form1};
 
 {$R *.res}
 
 begin
   Application.Initialize;
   Application.CreateForm(TForm1, Form1);
-  Application.CreateForm(TForm2, Form2);
-  Application.CreateForm(TForm3, Form3);
-  Application.CreateForm(TForm4, Form4);
   Application.Run;
 end.
+

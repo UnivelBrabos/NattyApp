@@ -1,6 +1,9 @@
-unit UsuarioModel;
+﻿unit UsuarioModel;
 
 interface
+
+uses
+  SysUtils;
 
 type
   TUsuario = class
@@ -9,24 +12,31 @@ type
     FNome: string;
     FEmail: string;
     FSenha: string;
-    FPeso: Double;
+    FPeso: string;
+    FAltura: string;
 
-    // Coloque todos os Métodos daqui para baixo (Sem passar do end;)
-    // Aqui fica a declaração. Após implementation coloque TUsuario. antes do nome do método
-    constructor Create(AId: Integer; const ANome, AEmail, ASenha: string; APeso: Double);
+    constructor Create(AId: Integer; const ANome, AEmail, ASenha: string; APeso, AAltura: string);
+    constructor Criar();
     function SqlTodosUsuarios(): string;
-
-end;
+    function UpdateUser(): string;
+    function UsuarioExiste(const Nome, Senha : string): string;
+  end;
 
 implementation
 
-constructor TUsuario.Create(AId: Integer; const ANome, AEmail, ASenha: string; APeso: Double);
+constructor TUsuario.Criar();
+begin
+
+end;
+
+constructor TUsuario.Create(AId: Integer; const ANome, AEmail, ASenha: string; APeso, AAltura: string);
 begin
   FId := AId;
   FNome := ANome;
   FEmail := AEmail;
   FSenha := ASenha;
   FPeso := APeso;
+  FAltura := AAltura;
 end;
 
 function TUsuario.SqlTodosUsuarios(): string;
@@ -34,4 +44,23 @@ begin
   Result := 'SELECT * FROM usuario';
 end;
 
+function TUsuario.UpdateUser(): string;
+begin
+  Result := 'UPDATE USUARIO SET ' +
+            'NOME = ''' + Self.FNome + ''', ' +
+            'PESO = ''' + Self.FPeso + ''', ' +
+            'ALTURA = ''' + Self.FAltura + '''' +
+            ' WHERE ID = ' + IntToStr(Self.FId);
+end;
+
+function TUsuario.UsuarioExiste(const Nome, Senha: string): string;
+begin
+  Result := Format(
+    'SELECT * FROM USUARIO WHERE (NOME = ''%s'' OR EMAIL = ''%s'') AND SENHA = ''%s''',
+    [Nome, Nome, Senha]
+  );
+end;
+
+
 end.
+

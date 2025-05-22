@@ -8,7 +8,6 @@ object Frame1: TFrame1
         'Database=C:\Users\carlo\OneDrive\Documentos\GitHub\NattyApp\Data' +
         '\NattyDB'
       'DriverID=SQLite')
-    Connected = True
     LoginPrompt = False
     Left = 232
     Top = 24
@@ -16,7 +15,7 @@ object Frame1: TFrame1
   object TQuerys: TFDQuery
     Connection = FDConnection1
     SQL.Strings = (
-      'select * from usuario')
+      'update usuario set peso = '#39'80.0'#39' where id = 2')
     Left = 40
     Top = 80
   end

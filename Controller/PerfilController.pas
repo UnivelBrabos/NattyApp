@@ -1,21 +1,91 @@
-unit PerfilController;
+﻿unit PerfilController;
 
 interface
 
 uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants, 
-  FMX.Types, FMX.Graphics, FMX.Controls, FMX.Forms, FMX.Dialogs, FMX.StdCtrls;
+  FMX.Types, FMX.Graphics, FMX.Controls, FMX.Forms, FMX.Dialogs, FMX.StdCtrls, UsuarioModel,
+  DataController;
 
 type
   TFrame4 = class(TFrame)
   private
-    { Private declarations }
+  TSQLManipulador: TFrame1;
   public
-    { Public declarations }
+  constructor Create(AOwner: TComponent); override;
+  procedure AtualizaUsuario(Usuario: TUsuario);
+  function UsuarioExiste(const Nome, Senha : string): TUsuario;
+  procedure TodosOsUsuarios();
+
+
   end;
 
 implementation
 
 {$R *.fmx}
+
+
+procedure TFrame4.TodosOsUsuarios();
+var
+Usuario: TUsuario;
+Mensagem: string;
+
+begin
+  Usuario := TUsuario.Criar;
+
+  TSQLManipulador.TQuerys.SQL.Text := Usuario.SqlTodosUsuarios;
+  TSQLManipulador.TQuerys.Open;
+
+  while TSQLManipulador.TQuerys.Eof do
+  begin
+    Mensagem := 'Usuario ' +  TSQLManipulador.TQuerys.FieldByName('Nome').AsString
+                 + 'Senha: ' + TSQLManipulador.TQuerys.FieldByName('Senha').AsString;
+
+    ShowMessage(Mensagem);
+    TSQLManipulador.TQuerys.Next;
+  end;
+
+end;
+
+constructor TFrame4.Create(AOwner: TComponent);
+begin
+  TSQLManipulador := TFrame1.Create(Self);
+  TSQLManipulador.Visible := False; // Não mostra o form do Sql
+end;
+
+procedure TFrame4.AtualizaUsuario(Usuario: TUsuario);
+var
+Query: string;
+
+begin
+  Query := Usuario.UpdateUser();
+
+  TSQLManipulador.TQuerys.SQL.Text := Query;
+  TSQLManipulador.TQuerys.ExecSQL;
+end;
+
+function TFrame4.UsuarioExiste(const Nome, Senha : string): TUsuario;
+var
+Query: string;
+Usuario: TUsuario;
+
+begin
+  Usuario := TUsuario.Criar;
+  Query := Usuario.UsuarioExiste(Nome, Senha);
+
+  TSQLManipulador.TQuerys.SQL.Text := Query;
+  TSQLManipulador.TQuerys.Open;
+
+  if not TSQLManipulador.TQuerys.IsEmpty then
+  begin
+     Usuario.FNome := TSQLManipulador.TQuerys.FieldByName('Nome').AsString;
+     Usuario.FEmail := TSQLManipulador.TQuerys.FieldByName('Email').AsString;
+     Usuario.FSenha := TSQLManipulador.TQuerys.FieldByName('Senha').AsString;
+     Usuario.FPeso := TSQLManipulador.TQuerys.FieldByName('Peso').AsString;
+     Usuario.FAltura := TSQLManipulador.TQuerys.FieldByName('Altura').AsString;
+  end;
+
+  Result := Usuario;
+end;
 
 end.

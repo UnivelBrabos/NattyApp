@@ -1,17 +1,22 @@
-unit Main;
+﻿unit Main;
 
 interface
 
 uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
-  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs;
+  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.Edit,
+  FMX.StdCtrls, FMX.Controls.Presentation, UsuarioModel, PerfilController, PerfilView;
 
 type
   TForm1 = class(TForm)
+    edtUsuario: TEdit;
+    edtSenha: TEdit;
+    btnEntrar: TButton;
+    procedure btnEntrarClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
   private
-    { Private declarations }
-  public
-    { Public declarations }
+    PerfilControlador: TFrame4;
   end;
 
 var
@@ -21,4 +26,34 @@ implementation
 
 {$R *.fmx}
 
+procedure TForm1.Button1Click(Sender: TObject);
+begin
+  PerfilControlador.TodosOsUsuarios;
+end;
+
+procedure TForm1.FormCreate(Sender: TObject);
+begin
+  PerfilControlador := TFrame4.Create(Self);
+end;
+
+procedure TForm1.btnEntrarClick(Sender: TObject);
+var
+  Usuario: TUsuario;
+  Perfil: TForm4;
+begin
+  Usuario := PerfilControlador.UsuarioExiste(edtUsuario.Text, edtSenha.Text);
+
+  if Usuario.FNome <> '' then
+  begin
+    Perfil := TForm4.Create(Self, Usuario);
+    Perfil.Show;
+    self.Visible := false; // Se der um close ele fecha tudo kkk
+  end
+  else
+  begin
+    ShowMessage('Usuário ou senha inválidos!');
+  end;
+end;
+
 end.
+

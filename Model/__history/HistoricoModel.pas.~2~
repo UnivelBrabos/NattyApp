@@ -1,0 +1,23 @@
+unit HistoricoModel;
+
+interface
+
+uses
+  System.SysUtils, System.Classes;
+
+type
+  TDataModule1 = class(TDataModule)
+  public
+    FDataRegistro: TDateTime;
+    FValorRegistro: Double;
+
+    constructor Create(
+  end;
+
+var
+  DataModule1: TDataModule1;
+
+implementation
+constructor
+
+end.
