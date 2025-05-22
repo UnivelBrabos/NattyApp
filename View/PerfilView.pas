@@ -1,4 +1,4 @@
-unit PerfilView;
+﻿unit PerfilView;
 
 interface
 
@@ -6,7 +6,7 @@ uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
   FMX.Types, FMX.Graphics, FMX.Controls, FMX.Forms, FMX.Dialogs, FMX.StdCtrls,
   FMX.Objects, FMX.Edit, FMX.Controls.Presentation, FMX.Ani, UsuarioModel,
-  PerfilController;
+  PerfilController, MontarTreinoView;
 
 type
   TForm4 = class(TForm)
@@ -23,8 +23,12 @@ type
     lblValorIMC: TLabel;
     lblDescIMC: TLabel;
     btnSalvar: TButton;
+    btnAcompanhar: TButton;
+    btnMontar: TButton;
+    btnPerfil: TButton;
     procedure FormShow(Sender: TObject);
     procedure btnSalvarClick(Sender: TObject);
+    procedure btnMontarClick(Sender: TObject);
   private
     FUsuario: TUsuario;
     FPerfilControlador: TFrame4;
@@ -47,31 +51,41 @@ end;
 procedure TForm4.FormShow(Sender: TObject);
 begin
   txtNome.Text := FUsuario.FNome;
-  txtPeso.Text := FUsuario.FPeso.ToString;
-  txtAltura.Text := FUsuario.FAltura.ToString;
+  txtPeso.Text := FUsuario.FPeso;
+  txtAltura.Text := FUsuario.FAltura;
   CalculaIMC;
 end;
 
-procedure TForm4.btnSalvarClick(Sender: TObject);
+procedure TForm4.btnMontarClick(Sender: TObject);
 var
-  fs: TFormatSettings;
+   Montar: TForm3;
 begin
-  fs := TFormatSettings.Create;
-  fs.DecimalSeparator := '.';
+   Montar := TForm3.Create(self,Usuario);
+   Montar.Show();
+   Close();
+end;
 
+procedure TForm4.btnSalvarClick(Sender: TObject);
+begin
   FUsuario.FNome := txtNome.Text;
-  FUsuario.FPeso := StrToFloat(txtPeso.Text, fs);
-  FUsuario.FAltura := StrToFloat(txtAltura.Text, fs);
+  FUsuario.FPeso := txtPeso.Text;
+  FUsuario.FAltura := txtAltura.Text;
 
   FPerfilControlador.AtualizaUsuario(FUsuario);
   CalculaIMC;
 end;
 
+
 procedure TForm4.CalculaIMC;
 var
+  fs: TFormatSettings;
   IMC: Double;
 begin
-  IMC := FUsuario.FPeso / Sqr(FUsuario.FAltura);
+  fs := TFormatSettings.Create;
+  fs.DecimalSeparator := '.';
+
+  IMC := StrToFloat(FUsuario.FPeso, fs) / Sqr(StrToFloat(FUsuario.FAltura, fs));
+
   lblValorIMC.Text := FormatFloat('0.0', IMC);
 
   if IMC < 18.5 then

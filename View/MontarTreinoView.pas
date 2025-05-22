@@ -1,4 +1,4 @@
-{
+﻿{
  Tarde Saymon, Vou te dar um caminho a seguir (Minha visão e auxilio),
  mas fique a vontade para fazer oque achar melhor!
 
@@ -54,21 +54,32 @@ interface
 uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants, 
   FMX.Types, FMX.Graphics, FMX.Controls, FMX.Forms, FMX.Dialogs, FMX.StdCtrls,
-  Main;
+  FMX.Edit, FMX.Controls.Presentation, FMX.Objects, UsuarioModel;
 
 type
-  TForm3 = class(TForm1)
+  TForm3 = class(TForm)
+    RecMenu: TRectangle;
+    btnAcompanhar: TButton;
+    btnMontar: TButton;
+    btnPerfil: TButton;
   private
-    { Private declarations }
+     FUsuario: TUsuario;
   public
-    { Public declarations }
+     constructor Create(AOwner: TComponent; const AUsuario: TUsuario); reintroduce;
   end;
 
 var
   Form3: TForm3;
+  Usuario: TUsuario;
 
 implementation
 
 {$R *.fmx}
+
+constructor TForm3.Create(AOwner: TComponent; const AUsuario: TUsuario);
+begin
+  inherited Create(AOwner);
+  FUsuario := AUsuario;
+end;
 
 end.

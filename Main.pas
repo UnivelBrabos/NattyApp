@@ -9,12 +9,9 @@ uses
 
 type
   TForm1 = class(TForm)
-    btnEntrar: TButton;
-    lblUsuario: TLabel;
     edtUsuario: TEdit;
-    lblSenha: TLabel;
     edtSenha: TEdit;
-    Button1: TButton;
+    btnEntrar: TButton;
     procedure btnEntrarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure Button1Click(Sender: TObject);
@@ -50,6 +47,7 @@ begin
   begin
     Perfil := TForm4.Create(Self, Usuario);
     Perfil.Show;
+    self.Visible := false; // Se der um close ele fecha tudo kkk
   end
   else
   begin

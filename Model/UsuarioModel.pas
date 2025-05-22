@@ -12,10 +12,10 @@ type
     FNome: string;
     FEmail: string;
     FSenha: string;
-    FPeso: Double;
-    FAltura: Double;
+    FPeso: string;
+    FAltura: string;
 
-    constructor Create(AId: Integer; const ANome, AEmail, ASenha: string; APeso, AAltura: Double);
+    constructor Create(AId: Integer; const ANome, AEmail, ASenha: string; APeso, AAltura: string);
     constructor Criar();
     function SqlTodosUsuarios(): string;
     function UpdateUser(): string;
@@ -29,7 +29,7 @@ begin
 
 end;
 
-constructor TUsuario.Create(AId: Integer; const ANome, AEmail, ASenha: string; APeso, AAltura: Double);
+constructor TUsuario.Create(AId: Integer; const ANome, AEmail, ASenha: string; APeso, AAltura: string);
 begin
   FId := AId;
   FNome := ANome;
@@ -48,8 +48,8 @@ function TUsuario.UpdateUser(): string;
 begin
   Result := 'UPDATE USUARIO SET ' +
             'NOME = ''' + Self.FNome + ''', ' +
-            'PESO = ''' + FloatToStr(Self.FPeso) + ''', ' +
-            'ALTURA = ''' + FloatToStr(Self.FAltura) + '''' +
+            'PESO = ''' + Self.FPeso + ''', ' +
+            'ALTURA = ''' + Self.FAltura + '''' +
             ' WHERE ID = ' + IntToStr(Self.FId);
 end;
 

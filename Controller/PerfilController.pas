@@ -81,8 +81,8 @@ begin
      Usuario.FNome := TSQLManipulador.TQuerys.FieldByName('Nome').AsString;
      Usuario.FEmail := TSQLManipulador.TQuerys.FieldByName('Email').AsString;
      Usuario.FSenha := TSQLManipulador.TQuerys.FieldByName('Senha').AsString;
-     Usuario.FPeso := TSQLManipulador.TQuerys.FieldByName('Peso').AsFloat;
-     Usuario.FAltura := TSQLManipulador.TQuerys.FieldByName('Altura').AsFloat;
+     Usuario.FPeso := TSQLManipulador.TQuerys.FieldByName('Peso').AsString;
+     Usuario.FAltura := TSQLManipulador.TQuerys.FieldByName('Altura').AsString;
   end;
 
   Result := Usuario;
